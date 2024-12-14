@@ -16,6 +16,9 @@ import webpackStream from 'webpack-stream';
 import browserSync from 'browser-sync';
 import htmlmin from 'gulp-htmlmin';
 
+import ghPages from 'gh-pages';
+
+
 
 const sass = gulpSass(dartSass);
 
