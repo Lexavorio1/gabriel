@@ -1,0 +1,158 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.section {
+    --section-bg: #{$bg-light};
+    --section-label-color: #{$color-primary};
+    --section-title-color: #{$color-text-dark};
+    --section-color: #{$color-text-dark-gray};
+    
+    background-color: var(--section-bg);
+    padding: rem(100) 0;
+    color: var(--section-color);
+    position: relative;
+
+    &--dark {
+        --section-bg: #{$bg-dark};
+        --section-title-color: #{$color-text-light};
+        --section-color: #{$color-text-light-gray};
+    }
+
+    &--pt0 {
+        padding-top: 0;
+    }
+
+    @include sm {
+        padding: rem(34) 0 rem(50);
+    }
+}
+
+.section:not(.secion--dark) + .section:not(.secion--dark)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: rem(1);
+    width: calc(100% - #{$gutter} * 2);
+    max-width: calc(1210px - #{$gutter} * 2);
+    background-color: $border-color;
+}
+
+.section__label {
+    color: var(--section-label-color);
+    font-size: rem(16);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 rem(24);
+}
+
+.section__title {
+    color: var(--section-title-color);
+    font-weight: 800;
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    &--h1 {
+        font-size: rem(72);
+        line-height: 1.11;
+        letter-spacing: rem(-2);
+        margin: 0 0 rem(24);
+
+        @include md {
+            font-size: rem(56);  
+        }
+    }
+    
+    &--h2 {
+        font-size: rem(56);
+        line-height: 1.14;
+        letter-spacing: -1px;
+        margin: 0 0 rem(24);
+
+        @include md {
+            font-size: rem(40);
+        }
+    }
+
+    &--h3 {
+        font-size: rem(40);
+        line-height: 1.2;
+        margin: 0 0 rem(20);
+
+        @include md {
+            margin-bottom: rem(16);
+        }
+    }
+
+    &--h4 {
+        font-size: rem(24);
+        line-height: 1.33;
+        margin: 0 0 rem(22);
+    }
+}
+
+.section-lead {
+    color: var(--section-title-color);
+    font-size: rem(20);
+    line-height: 1.6;
+    margin: 0 0 rem(18);
+}
+
+.section__header {
+    margin-bottom: rem(64);
+    
+    @include md {
+        font-size: rem(35);
+    }
+
+    &--center {
+        max-width: rem(450);
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;  
+    }
+
+    &--flex {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .section__info {
+            margin-bottom: rem(-15);
+        }
+
+        .section__title {
+            margin-bottom: 0;
+
+            @include sm {
+                margin-bottom: rem(32);
+            }
+        }
+
+        @include sm{
+            display: block;
+        }
+    }
+}
+
+.section__desc {
+    line-height: 2;
+    margin: 0 0 rem(34);
+}
+
+.section__footer {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: rem(60);
+    &--center {
+        text-align: center;
+    }
+
+    @include sm {
+        padding-top: rem(44);
+    }
+}

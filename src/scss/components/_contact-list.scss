@@ -1,0 +1,55 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+$contact-list-icon-size: rem(48);
+
+.contact-list {
+    font-size: rem(20);
+    font-style: normal;
+    color: var(--section-title-color);
+}
+
+.contact-list__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: rem(16);
+
+    &::before {
+        content: '';
+        width: $contact-list-icon-size;
+        height: $contact-list-icon-size;
+        border-radius: 50%;
+        background-color: $color-primary;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: calc($contact-list-icon-size / 2);
+        height: calc($contact-list-icon-size / 2);
+        top: calc($contact-list-icon-size / 2);
+        left: calc($contact-list-icon-size / 2);
+        transform: translate(-50%, -50%);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: rem(16);
+    }
+
+    &--address::after {
+        background-image: url('../../assets/images/sprite.svg#compass');
+    }
+
+    &--phone::after {
+        background-image: url('../../assets/images/sprite.svg#phone');
+    }
+
+    &--email::after {
+        background-image: url('../../assets/images/sprite.svg#message');
+    }
+}

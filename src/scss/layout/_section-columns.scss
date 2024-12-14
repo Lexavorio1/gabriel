@@ -1,0 +1,83 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.section-columns {
+    padding: rem(160) 0;
+
+    @include sm {
+        padding: rem(34) 0 rem(50);
+    }
+
+    &--small {
+        padding: rem(130) 0 rem(150);
+
+        @include sm {
+            padding: rem(70) 0 rem(50);
+        }
+    
+    }
+}
+
+.section-columns__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: rem(60);
+
+    @include sm {
+        flex-direction: column;
+        gap: rem(30);
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+
+        @include sm {
+            flex-direction: column-reverse;
+        }
+    }
+}
+
+.section-columns__item {
+    flex-basis: 40%;
+
+    @include sm {
+        flex-basis: auto;
+    }
+
+    &--text {
+        padding: rem(60) 0;
+
+        @include sm {
+            padding: 0;;
+        }
+    }
+
+    &--media {
+        display: flex;
+        flex-basis: 48.7%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        
+        @include sm {
+            order: -1;
+            min-height: rem(320);
+        }
+    }
+
+    &--wide {
+        flex-basis: 48.7%;
+    }
+}
+
+.section-columns__footer {
+    padding-top: rem(120);
+    margin-bottom: rem(-30);
+    
+    @include sm {
+        margin-bottom: rem(40);
+    }
+}

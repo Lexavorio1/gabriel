@@ -1,0 +1,35 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.header {
+    background-color: $bg-dark;
+    color: $color-text-light;
+    padding: rem(15) 0;
+    position: relative;
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gutter;
+}
+
+.header__menu {
+    flex-grow: 1;
+    padding: 0 rem(32);
+    max-width: rem(448);
+
+    @include sm {
+        flex-grow: 0;
+        padding: 0;
+        max-width: revert;
+    }
+}
+
+.header__button {
+    @include sm {
+        display: none;
+    }
+}

@@ -1,0 +1,19 @@
+@use '../functions' as *;
+
+.star-rating {
+    display: flex;
+    gap: rem(8);
+}
+
+.star-rating__item {
+    width: rem(24);
+    height: rem(24);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../../assets/images/sprite.svg#star-0');
+
+    &--checked {
+        background-image: url('../../assets/images/sprite.svg#star-1');
+    }
+}

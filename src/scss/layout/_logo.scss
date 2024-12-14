@@ -1,0 +1,16 @@
+@use '../functions' as *;
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: rem(17)
+}
+
+.logo__title {
+    margin: 0;
+    font-size: rem(24);
+    font-weight: 700;
+    line-height: 1.33;
+}

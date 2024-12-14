@@ -1,0 +1,63 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.get-started {
+    padding: rem(48) 0;
+    background-color: #F9E5DA;
+
+    @include md {
+        padding-top: rem(93);
+    }
+}
+
+.get-started__container {
+    position: relative;
+    padding: 0 rem(68);
+    display: flex;
+    align-items: center;
+    gap: rem(60);
+           
+    @include md {
+        flex-direction: column;
+        align-items: revert;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: rem(68);
+        top: rem(-48);
+        height: rem(148);
+        width: rem(148);
+        transform: translateY(-50%);
+        background-image: url('../../assets/images/sprite.svg#star-gift');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+            
+        @include md {
+            top: rem(-93);
+        }
+    }
+}
+
+.get-started__item {
+    line-height: 2;
+    margin: 0;
+
+    &--media {
+        aspect-ratio: 338 / 241;
+        min-height: rem(240);
+        background-repeat: no-repeat;
+        background-position: center 25px;
+        background-size: contain;
+
+        @include md {
+            margin-top: rem(-30);
+            margin-left: rem(-68);
+            margin-right: rem(-68);
+            width: calc(100% + rem(68) * 2);
+        }
+    }
+}

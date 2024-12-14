@@ -1,0 +1,13 @@
+@use '../../variables' as *;
+@use '../../mixins' as *;
+@use '../../functions' as *;
+
+.accordion-list {
+    @include list-reset;
+    border-radius: rem(6);
+    border: rem(1) solid #3A3C56;
+}
+
+.accordion-list__item:not(:last-child) {
+    border: rem(1) solid #3A3C56;
+}

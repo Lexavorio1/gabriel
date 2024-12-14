@@ -1,0 +1,25 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.tile-list {
+    @include list-reset;
+    border: 1px solid $border-color;
+    border-radius: rem(6);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include sm {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tile-list__item + .tile-list__item { 
+    border-left: 1px solid $border-color;
+    
+    @include sm {
+        border-left: 0;
+        border-top: 1px solid $border-color;
+    }  
+}

@@ -1,0 +1,36 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.social-list {
+    @include list-reset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(8);
+}
+
+.social-item__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(48);
+    height: rem(48);
+    border-radius: 50%;
+    background-color: $color-primary;
+    color: #fff;
+    transition: opacity .3s ease;
+
+    &:hover {
+        opacity: .5;
+    }
+}
+
+.social-item__icon {
+    display: block;
+    width: 100%;
+    max-width: rem(16);
+    height: auto;
+    max-height: rem(16);
+    fill: currentColor;
+}

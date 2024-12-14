@@ -1,0 +1,54 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use './functions' as *;
+
+@include font-face('Epilogue-VariableFont', '.../assets/fonts/Epilogue-VariableFont_wght');
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font-base;
+    background-color: $bg-light;
+    color: $color-text-dark-gray;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1210px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}

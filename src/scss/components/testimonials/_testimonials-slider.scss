@@ -1,0 +1,60 @@
+@use '../../variables' as *;
+@use '../../mixins' as *;
+@use '../../functions' as *;
+
+@forward 'node_modules/swiper/swiper.scss' with (
+    $themeColor: $color-primary
+);
+
+@use 'node_modules/swiper/modules/a11y.scss';
+@use 'node_modules/swiper/modules/pagination.scss';
+
+.testimonials-slider {
+    @include sm {
+        margin: 0 $gutter;
+    }
+}
+
+.testimonials-slider__list {
+    @include list-reset;
+    margin-bottom: rem(76);
+}
+
+.testimonials-slider__item {
+    width: 50%;
+    opacity: .25;
+    transition: opacity .6s ease;
+
+    &.swiper-slide-active {
+        opacity: 1;
+    }
+
+    @include sm {
+        width: 100%;
+    }
+}
+
+.testimonials-slider__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(16);
+    bottom: 0;
+}
+
+.testimonials-slider__pagination-bullet {
+    display: block;
+    padding: 0;
+    width: rem(12);
+    height: rem(12);
+    border: 1px solid $color-text-dark;  
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color .3s ease, border-color .3s ease;
+    cursor: pointer;
+
+    &--active {
+        border-color: $color-primary;
+        background-color: $color-primary;
+    }
+}

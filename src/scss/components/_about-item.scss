@@ -1,0 +1,71 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+$about-item-icon-size: rem(112);
+
+.about-item {
+    position: relative;
+    margin: 0;
+    min-height: calc(rem(112) + rem(32) * 2 - rem(13));
+    color: var(--section-title-color);
+    padding: rem(32) rem(48) rem(32) rem(200);
+
+    @include sm {
+        padding-left: rem(170);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: rem(48);
+        top: calc(rem(32) - rem(13));
+        width: $about-item-icon-size;
+        height: $about-item-icon-size;
+        background-color: $color-primary;
+        border-radius: 50%;
+        z-index: 1;
+        
+        @include sm {
+            left: rem(30);
+        }
+    }
+
+    &::after {
+        content: '';
+        width: calc($about-item-icon-size / 2.33);
+        height: calc($about-item-icon-size / 2.33);
+        position: absolute;
+        top: calc($about-item-icon-size / 2 + rem(32) - rem(13));
+        left: calc($about-item-icon-size / 2 + rem(48));
+        transform: translate(-50%, -50%);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 2;
+                
+        @include sm {
+            left: calc($about-item-icon-size / 2 + rem(30));
+        }
+    }
+
+    &--icon--experience::after {
+        background-image: url(../../assets/images/sprite.svg#experience);
+    }
+
+    &--icon--projects::after {
+        background-image: url(../../assets/images/sprite.svg#case);
+    }
+}
+.about-item__title {
+    display: block;
+    font-size: rem(40);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 rem(12);
+}
+
+.about-item__desc {
+    font-size: rem(20);
+    line-height: 1.2;
+}

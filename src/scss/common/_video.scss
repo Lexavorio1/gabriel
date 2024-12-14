@@ -1,0 +1,48 @@
+@use '../variables' as *;
+@use '../functions' as *;
+
+$video-play-icon-size: rem(148);
+
+.video {
+    position: relative;
+    flex-basis: 100%;
+
+    &.is-active .video__play,
+    &.is-active .video__poster {
+        display: none;
+    }
+}
+
+.video__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+}
+
+.video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $video-play-icon-size;
+    height: $video-play-icon-size;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    transition: transform .3s ease;
+    z-index: 2;
+    
+    &:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.video__play-icon {
+    width: 100%;
+    height: 100%;
+}

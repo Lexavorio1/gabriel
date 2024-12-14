@@ -1,0 +1,24 @@
+@use '../functions' as *;
+@use '../mixins' as *;
+
+.section-divider {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: rem(240);
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, rem(180));
+    }
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, rem(188));
+    }
+}
+
+.section-divider__item {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

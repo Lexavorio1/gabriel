@@ -1,0 +1,103 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use '../functions' as *;
+
+.menu__list {
+    @include list-reset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gutter;
+    
+    @include sm {
+        display: none;
+        align-items: revert;
+        justify-content: revert;
+        gap: 0;
+    }
+}
+
+.menu__item {
+    @include sm {
+        &:not(:last-child) {
+            border-bottom: rem(1) solid rgba(255, 255, 255, .05);;
+        }
+    }
+}
+
+.menu__link {
+    @include sm {
+        display: block;
+        padding: rem(16) 0;
+        text-align: center;
+    }
+}
+
+.menu__toggle {
+    display: none;
+    height: rem(48);
+    width: rem(48);
+    padding: 0;
+
+    @include sm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.menu__toggle-icon {
+    display: inline-flex;
+    width: rem(16);
+    height: rem(16);
+    position: relative;
+    flex-direction: column;
+    gap: rem(4);
+
+    .line {
+        display: block;
+        width: 100%;
+        height: rem(2);
+        background-color: currentColor;
+        border-radius: 1px;
+        opacity: 1;
+        transform: rotate(0) translateY(0) translateX(0);
+        transition: opacity .2s ease-in-out, transform .3s ease-in-out;
+    }
+
+    .line-1 {
+        transform-origin: rem(-1) rem(6);
+    }
+
+    .line-3 {
+        transform-origin: rem(3) rem(-1);       
+    }
+}
+
+.menu__toggle.menu__toggle--active {
+    .line-1 {
+        transform: rotate(45deg) translateY(0) translateX(0);
+    }
+
+    .line-2 {
+        opacity: 0; 
+    }
+
+    .line-3 {
+        transform: rotate(-45deg) translateY(0) translateX(0);    
+    }
+
+    @include sm {
+        + .menu__list {
+            display: flex;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            background-color: $bg-dark;
+            flex-direction: column;
+            border-top: rem(1) solid rgba(255, 255, 255, .05);
+            z-index: 1;
+        }
+    }
+}

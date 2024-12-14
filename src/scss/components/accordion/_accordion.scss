@@ -1,0 +1,101 @@
+@use '../../variables' as *;
+@use '../../mixins' as *;
+@use '../../functions' as *;
+
+$accordion-icon-size: rem(32);
+
+.accordion {
+    background-color: var(--section-bg);
+    color: var(--section-title-color);
+    transition: background-color .3s ease;
+}
+
+.accordion__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(40) rem(34) rem(40) rem(48);
+    gap: rem(16);
+    position: relative;
+    cursor: pointer;
+    transition: color .4s ease;
+
+    &::marker {
+        display: none;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        width: rem(12);
+        height: rem(7);
+        position: absolute;
+        top: calc(50% - rem(3.5));
+        right: rem(44);
+        background-image: url('../../../assets/images/sprite.svg#arrow-rounded-down');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: rotate(0);
+        transition: transform .25s ease;
+    }
+
+    &::after {
+        content: '';
+        flex-shrink: 0;
+        width: $accordion-icon-size;
+        height: $accordion-icon-size;
+        background-color: $color-primary;
+        border-radius: 50%;
+    }
+
+    @include sm {
+        padding: rem(40) rem(28);
+
+        &::before {
+            right: rem(38);
+        }
+    }
+}
+
+.accordion__title {
+    font-size: rem(24);
+    line-height: 1.33;
+    margin: 0;
+}
+
+.accordion__body {
+    padding: 0 rem(50) rem(44);
+    color: $color-text-dark;
+    line-height: 2;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity .4s ease;
+
+    p {
+        margin-top: 0;
+    }
+
+    @include sm {
+        padding: 0 rem(28) rem(38);
+    }
+}
+
+.accordion[open] {
+    background-color: #fff;
+    border-color: transparent;
+    color: (--section-title-color);
+
+    .accordion__body {
+        opacity: 1;
+        max-height: revert;
+    }
+
+    .accordion__header {
+        color: $color-text-dark;
+
+        &::before {
+            transform: rotate(180deg);
+        }
+    }
+}
